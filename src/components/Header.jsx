@@ -3,7 +3,8 @@ import LOGO_PNG from "../assets/png/logo.png";
 import PHONE_SVG from "../assets/svg/phone_svg.svg";
 import PHONE_SVG_WHITE from "../assets/svg/phone_svg_white.svg";
 
-import LANG_SVG from "../assets/svg/language/ru_svg.svg";
+import RU_LANG_SVG from "../assets/svg/language/ru_svg.svg";
+import EN_LANG_SVG from "../assets/svg/language/en_svg.svg";
 import { Link } from "react-router-dom";
 
 import BUGER_BUTTON_SVG from "../assets/svg/header_buttons/burger.svg";
@@ -12,12 +13,17 @@ import CLOSE_BUTTON_SVG from "../assets/svg/header_buttons/close.svg";
 import { useTranslation } from "react-i18next";
 
 function Header() {
+  const [language, setLanguage] = useState("ru");
+  const { i18n } = useTranslation();
   const [visible, setVisible] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const toggleMenu = () => {
     setVisible((p) => !p);
   };
-
+  const handleChangeLanguage = (lang) => {
+    i18n.changeLanguage(lang);
+    setLanguage(lang);
+  };
   const { formVisible, toggleFormVisible } = useGlobalState();
 
   const { t } = useTranslation();
@@ -69,9 +75,15 @@ function Header() {
                 +996 312 988 301
               </span>
             </button>
-            <button className=" font-semibold outline outline-[#EBEBEB] outline-[1px] p-[16px] rounded-[8px] flex gap-[8px] hover:bg-[#180090] hover:text-white">
-              <img src={LANG_SVG} alt="" />
-              Русский
+            <button
+              onClick={() =>
+                handleChangeLanguage(language === "ru" ? "en" : "ru")
+              } // Toggle language
+              className="font-semibold outline outline-[#EBEBEB] outline-[1px] p-[16px] rounded-[8px] flex gap-[8px] hover:bg-[#180090] hover:text-white"
+            >
+              <img src={language === "ru" ? EN_LANG_SVG : RU_LANG_SVG} alt="" />
+              {/* Step 2: Change button text based on the current language */}
+              {language === "ru" ? "English" : "Русский"}
             </button>
           </div>
           <div className=" xl:hidden">
