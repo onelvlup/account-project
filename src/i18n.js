@@ -1,6 +1,7 @@
 import i18next from "i18next";
 import I18nextBrowserLanguageDetector from "i18next-browser-languagedetector";
 import { initReactI18next } from "react-i18next";
+import { overlay } from "three/tsl";
 
 i18next
   .use(I18nextBrowserLanguageDetector)
@@ -254,6 +255,63 @@ i18next
               "2025 © KAB group by Anna Kalinina. Все права защищены",
             author_text: "Разработка и дизайн сайта:",
           },
+          terms: {
+            title: "Соглашение о защите персональных данных",
+            intro:
+              "Я, свободно, осознанно и по своей воле в соответствии с Законом Кыргызской Республики “Об информации персонального характера” от 14 апреля 2008 года №58 даю согласие Обществу с ограниченной ответственностью “__________” (Далее по тексту - “Оператор”) :",
+            intro_items: [
+              "на обработку (любая операция или набор операций, выполняемых независимо от способов держателем (обладателем) персональных данных либо по его поручению, автоматическими средствами или без таковых, в целях сбора, записи, хранения, актуализации, группировки, блокирования, стирания и разрушения персональных данных), а также на:",
+              'передачу персональных данных (предоставление держателем (обладателем) персональных данных третьим лицам в соответствии с Законом Кыргызской Республики "Об информации персонального характера" и международными договорами;',
+              "трансграничную передачу персональных данных (передача держателем (обладателем) персональных данных держателям, находящимся под юрисдикцией других государств) следующих персональных данных:",
+            ],
+            intro_body:
+              "1. Согласие дается на обработку всех категорий персональных данных, предоставляемых мною, которые могут включать:",
+            body_items: [
+              "Фамилия, имя, отчество: ",
+              "Персональный идентификационный номер: ",
+              "Число, месяц, год рождения: ",
+              "Пол: ",
+              "Данные удостоверения личности: ",
+              "Паспортные данные (серия, номер, дата выдачи, наименование органа, выдавшего документ) и гражданство: ",
+              "Адрес места жительства (регистрации и фактический): ",
+              "Наименование организации: ",
+              "ИНН/ОКПО организации: ",
+              "Номер домашнего и мобильного телефона: ",
+              "Адрес электронной почты: ",
+              "Номер паспорта и срок его действия: ",
+              "Иная информация: ",
+            ],
+            body_1:
+              "2. Оператор вправе совершать следующие действия: собирать данные; делать запись; систематизировать ответ; копить данные; хранить данные; уточнять данные (обновлять, изменять); извлекать данные; использовать данные; блокировать данные; удалять данные; уничтожить данные.",
+            body_2:
+              "3. Способы обработки персональных данных: с использованием средств автоматизации/без использования средств автоматизации.",
+            body_3:
+              "4. Цель обработки: предоставление услуг/работ, включая, направления уведомлений, касающихся предоставляемых услуг/работ, подготовка и направление ответов на запросы, информации о мероприятиях/товарах/услугах/работах Оператора.",
+            conclution: "Я ознакомлен(а) с тем, что:",
+            conclution_items: [
+              "согласие на обработку персональных данных действует с даты подписания настоящего согласия в течение всего срока предоставления мне государственной (муниципальной) услуги и хранения данных об оказанной услуге в соответствии с законодательством Кыргызской Республики;",
+              "согласие на обработку персональных данных может быть отозвано на основании письменного заявления в произвольной форме направленного на электронный адрес :___________@_____.____ с обязательным направлением по адресу фактического местонахождения.",
+              'в случае отзыва согласия на обработку персональных данных обработка моих персональных данных полностью или частично может быть продолжена в соответствии со статьями 5 и 15 Закона Кыргызской Республики "Об информации персонального характера" от 14 апреля 2009 года №58',
+            ],
+          },
+          overlay: {
+            p: "Помогаем бизнесу вести бухучет безупречно с 2006 года",
+            title: "Возьмём бухгалтерию на себя",
+            title_p:
+              "Закроем отчётность, наладим учёт, подскажем, где можно сэкономить",
+            input_1: "Имя*",
+            input_2: "E-mail*",
+            input_3: "Телефон*",
+            input_submit: "Оставить заявку",
+            terms_text:
+              "Нажимая на кнопку “Оставить заявку”, я даю свое согласие на обработку моих персональных данных в соответствии с Законом КР",
+            success_text: "Спасибо за обращение!",
+            success_text_p:
+              "Мы перезвоним вам на номер, указанный в заявке. Не пропустите звонок.",
+            contact: "Если у вас срочный вопрос, позвоните нам:",
+            wa_button_text: "Перейти в WhatsApp",
+            tel_button_text: "Перейти в WhatsApp",
+          },
         },
       },
 
@@ -504,6 +562,66 @@ i18next
             copyright_text: "Website development and design by:",
             author_text:
               "2025 © KAB group by Anna Kalinina. All rights reserved.",
+          },
+          terms: {
+            title: "Agreement on the protection of personal data",
+            intro:
+              "I, freely, consciously and voluntarily, in accordance with the Law No. 58 of the Kyrgyz Republic “On Personal Information” dated April 14, 2008, do give my consent to IP Kalinina Anna Vladimirovna (hereinafter referred to as the “Operator”):",
+
+            intro_items: [
+              "processing (any operation or set of operations performed independently of the methods by the holder (owner) of personal data or on its behalf, by automatic means or without them, for the purpose of collecting, recording, storing, updating, grouping, blocking, erasing and destroying personal data), as well as:",
+
+              "transfer of personal data (provision “on by the holder(s) of personal data to third parties in accordance with the Law of the Kyrgyz Republic “On Personal Information” and international agreements;",
+
+              "cross-border transfer of personal data (transfer by the holder(s) of personal data to holders under the jurisdiction of other States) of the following personal data:",
+            ],
+            intro_body:
+              "Consent is given to the processing of all categories of personal data provided by me, which may include:",
+            body_items: [
+              "Last name, first name, patronymic",
+              "Personal identification number",
+              "Date, month, and year of birth",
+              "Gender",
+              "Personal identification data",
+              "Passport data (series, number, date of issue, name of the issuing authority) and nationality",
+              "Address of the place of residence (registration and actual)",
+              "Name of the organization",
+              "INN/OKPO of the organization",
+              "Home and mobile phone number",
+              "Email address",
+              "Passport number and validity period",
+              "Other information",
+            ],
+            body_1:
+              "1.   The Operator has the right to perform the following actions: collect data; make a record; organize the response; accumulate data; store data; refine data (update, modify); extract data; use data; block data; delete data; destroy data.",
+            body_2:
+              "2.   Methods of personal data processing: with or without automation tools.",
+            body_3:
+              "3.   Purpose of processing: provision of services/works, including sending notifications regarding the services/works provided, preparing and sending responses to requests, information about the activities/goods/services/ works of the Operator.",
+            conclution: "I am familiar with the fact that:",
+            conclution_items: [
+              "consent to the processing of personal data is valid from the date of signing this agreement for the entire period of providing me with state (municipal) services and storing data on the service provided in accordance with the legislation of the Kyrgyz Republic;",
+              "consent to the processing of personal data may be revoked on the basis of a written application in any form sent to the email address: audit.buhuchet@mail.ru with mandatory referral to the address of the actual location.",
+              "in case of withdrawal of consent to the processing of personal data, the processing of my personal data in whole or in part may be continued in accordance with Articles 5 and 15 of the Law No. 58 of the Kyrgyz Republic “On Personal Information” dated April 14, 2009.",
+            ],
+          },
+          overlay: {
+            p: "Helping businesses maintain flawless accounting since 2006",
+            title: "We’ll Handle Your Accounting",
+            title_p:
+              "We will submit your reports, organize your accounting system, and show you where you can reduce costs.",
+            input_1: "Name*",
+            input_2: "E-mail*",
+            input_3: "Phone*",
+            input_submit: "Submit Request",
+            terms_text:
+              "By clicking “Submit Request,” I consent to the processing of my personal data in accordance with the legislation of the Kyrgyz Republic.",
+            success_text: "Thank You for Your Request!",
+            success_text_p:
+              "We will call you back at the number you provided. Please do not miss the call.",
+            contact: "If your question is urgent, call us at:",
+            wa_button_text: "Open in WhatsApp",
+            tel_button_text: "Open in Telegram",
           },
         },
       },

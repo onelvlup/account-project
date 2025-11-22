@@ -2,7 +2,7 @@ import React from "react";
 function CardTeam({ name, description, image }) {
   return (
     <div className="pr-[12px]">
-      <div className="flex flex-col max-w-[306px] w-full">
+      <div className="flex flex-col w-full">
         <div>
           <img src={image} alt="" />
         </div>

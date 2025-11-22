@@ -50,6 +50,8 @@ function Hero() {
 }
 
 const ContactOverlay = ({ toggle }) => {
+  const { t } = useTranslation();
+  const overlay_data = t("overlay", { returnObjects: true });
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -144,7 +146,7 @@ const ContactOverlay = ({ toggle }) => {
         <div className="bg-[#180090]  w-[280px] rounded-l-[24px] p-[32px] pb-0 py-[40px] flex flex-col">
           <img src={LOGO_WHITE_PNG} alt="" />
           <small className="13px pt-[16px] text-white  opacity-70">
-            Помогаем бизнесу вести <br /> бухучет безупречно с 2006 года
+            {overlay_data.p}
           </small>
           <img src={CONTACT_PERSON} className="h-full object-cover" alt="" />
         </div>
@@ -152,17 +154,14 @@ const ContactOverlay = ({ toggle }) => {
         {/* Right Form Section */}
         <div className=" p-[76px] px-[72px] max-w-[561px] w-full">
           <h3 className="font-semibold text-[28px] text-[#091520]">
-            {final ? "Спасибо за обращение!" : "   Возьмём бухгалтерию на себя"}
+            {final ? "Спасибо за обращение!" : overlay_data.title}
           </h3>
           <p className="text-[#747480] font-medium">
-            {final
-              ? "Мы перезвоним вам на номер, указанный в заявке. Не пропустите звонок."
-              : "Закроем отчётность, наладим учёт, подскажем, где можно сэкономить"}
+            {final ? overlay_data.succes_text : overlay_data.title_p}
           </p>
           {final && (
             <p className=" text-[#091520] pt-[40px]">
-              Если у вас срочный вопрос, позвоните нам: <br />{" "}
-              <b>+996 312 988 301</b>
+              {overlay_data.success_text_p} <br /> <b>+996 312 988 301</b>
             </p>
           )}
 
@@ -175,7 +174,7 @@ const ContactOverlay = ({ toggle }) => {
                 className="bg-[#25D366] p-[13px] px-[24px] flex gap-[12px] rounded-[12px] mt-[32px]"
               >
                 <img src={WHATSAPP_BUTTON_SVG} alt="" />
-                Перейти в WhatsApp
+                {overlay_data.wa_button_text}
               </button>
               <br />
               <button
@@ -185,7 +184,7 @@ const ContactOverlay = ({ toggle }) => {
                 className="bg-telegram p-[13px] px-[24px] flex gap-[12px] rounded-[12px] mb-[115px]"
               >
                 <img src={TELEGRAM_BUTTON_SVG} alt="" />
-                Перейти в WhatsApp
+                {overlay_data.tel_button_text}
               </button>
             </>
           ) : (
@@ -198,30 +197,29 @@ const ContactOverlay = ({ toggle }) => {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 className="font-semibold outline outline-[#EBEBEB] outline-[1px] p-[16px] rounded-[8px]"
-                placeholder="Имя*"
+                placeholder={overlay_data.input_1}
               />
               <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className="font-semibold outline outline-[#EBEBEB] outline-[1px] p-[16px] rounded-[8px]"
-                placeholder="E-mail*"
+                placeholder={overlay_data.input_2}
               />
               <input
                 type="tel"
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
                 className="font-semibold outline outline-[#EBEBEB] outline-[1px] p-[16px] rounded-[8px]"
-                placeholder="Телефон*"
+                placeholder={overlay_data.input_3}
               />
               <input
                 type="submit"
-                value="Оставить заявку"
+                value={overlay_data.input_submit}
                 className="py-[13px] w-full text-white bg-[#091520] rounded-[8px] mt-[24px]"
               />
               <small className="text-[12px] text-[#888E94] font-semibold">
-                Нажимая на кнопку “Оставить заявку”, я даю свое согласие на
-                обработку моих персональных данных в соответствии с Законом КР
+                {overlay_data.terms_text}
               </small>
             </form>
           )}

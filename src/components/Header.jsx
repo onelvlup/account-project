@@ -139,7 +139,7 @@ const NavigationMenu = ({ links, setVisible }) => {
           </span>
         </button>
         <button className=" font-semibold outline outline-[#EBEBEB] outline-[1px] p-[16px] rounded-[8px] flex gap-[8px] hover:bg-[#180090] hover:text-white">
-          <img src={LANG_SVG} alt="" />
+          <img src={RU_LANG_SVG} alt="" />
           Русский
         </button>
       </div>

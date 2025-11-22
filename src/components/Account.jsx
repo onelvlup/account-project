@@ -34,7 +34,7 @@ function Account() {
 
           {/* Middle column */}
           <div
-            className="bg-cover bg-center h-full col-span-1 row-span-2  rounded-[16px] flex flex-1 items-end flex-col "
+            className="bg-cover bg-center h-full col-span-1 row-span-2  rounded-[16px] flex flex-1 items-end flex-col min-h-[544px] h-full"
             style={{ backgroundImage: `url(${ANNA_JPEG})` }} // Apply the background image via inline style
           >
             <div className="text-white p-[32px] flex flex-col bg-[#180090] gap-[16px] rounded-[16px] mt-auto">

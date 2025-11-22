@@ -3,7 +3,7 @@ import React from "react";
 function CardService({ bgColor = "#EAF2FF", title, items, image, index }) {
   return (
     <div
-      className={`flex rounded-[24px] p-[32px]  ${
+      className={` flex-col-reverse md:flex-row flex rounded-[24px] px-[16px] md:px-[32px] p-[32px]  ${
         index === 4 ? " col-span-2" : ""
       }`}
       style={{ backgroundColor: bgColor }}

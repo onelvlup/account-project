@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Span from "./Span";
 import RIGHT_BUTTON_SVG from "../assets/svg/buttons/button_1.svg";
 import LEFT_BUTTON_SVG from "../assets/svg/buttons/button_2.svg";
@@ -15,6 +15,37 @@ import user_8 from "../assets/png/profile/user_8.png";
 import user_9 from "../assets/png/profile/user_9.png";
 import Slider from "react-slick";
 function Team() {
+  const [slidesToShow, setSlidesToShow] = useState(4); // Initial slidesToShow for larger screens
+  const [slidesToScroll, setSlidesToScroll] = useState(4); // Initial slidesToScroll for larger screens
+
+  const updateSlides = () => {
+    const width = window.innerWidth;
+    if (width <= 480) {
+      setSlidesToShow(1);
+      setSlidesToScroll(1);
+    } else if (width <= 600) {
+      setSlidesToShow(2);
+      setSlidesToScroll(2);
+    } else if (width <= 1024) {
+      setSlidesToShow(3);
+      setSlidesToScroll(3);
+    } else {
+      setSlidesToShow(4);
+      setSlidesToScroll(4);
+    }
+  };
+
+  useEffect(() => {
+    // Update slides when window resizes
+    updateSlides();
+
+    // Add event listener for window resize
+    window.addEventListener("resize", updateSlides);
+
+    // Clean up event listener on component unmount
+    return () => window.removeEventListener("resize", updateSlides);
+  }, []);
+
   const users = [
     user_1,
     user_2,
@@ -28,34 +59,35 @@ function Team() {
   ];
   const { t } = useTranslation();
   const team_data = t("team", { returnObjects: true });
-  const settings = {
+  var settings = {
     dots: false,
-    infinite: true,
+    infinite: false,
     speed: 500,
-    slidesToShow: 4,
-    slidesToScroll: 1,
+    slidesToShow: slidesToShow, // Dynamic value
+    slidesToScroll: slidesToScroll, // Dynamic value
     initialSlide: 0,
-
     responsive: [
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: false,
+          dots: false,
         },
       },
       {
         breakpoint: 600,
         settings: {
           slidesToShow: 2,
-          slidesToScroll: 1,
+          slidesToScroll: 2,
           initialSlide: 2,
         },
       },
       {
         breakpoint: 480,
         settings: {
-          slidesToShow: 2,
+          slidesToShow: 1,
           slidesToScroll: 1,
         },
       },
@@ -83,8 +115,7 @@ function Team() {
             </button>
           </div>
         </div>
-
-        <div className="pt-[56px] overflow-hidden">
+        <div className=" pt-[56px]">
           <Slider
             ref={(slider) => {
               sliderRef = slider;

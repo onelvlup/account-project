@@ -13,7 +13,7 @@ function About() {
               {" "}
               {t("about", { returnObjects: true })}
             </h2>
-            <div className="flex justify-between pr-[60px]">
+            <div className="flex justify-between pr-[60px] flex-wrap">
               <div>
                 <h3 className=" font-extrabold text-[#180090] text-[52px]">
                   20+{" "}
@@ -50,7 +50,7 @@ function About() {
             <br />
             {t("about_p_4", { returnObjects: true })}
           </p>
-          <div className="flex justify-between pr-[60px] lg:hidden">
+          <div className="flex justify-between pr-[60px] lg:hidden  flex-wrap justify-between pt-[32px]">
             <div>
               <h3 className=" font-extrabold text-[#180090] text-[52px]">
                 20+{" "}

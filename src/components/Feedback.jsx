@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Span from "./Span";
 import RIGHT_BUTTON_SVG from "../assets/svg/buttons/button_1.svg";
 import LEFT_BUTTON_SVG from "../assets/svg/buttons/button_2.svg";
@@ -17,13 +17,43 @@ function Feedback() {
   const { t } = useTranslation();
   const feedback_data = t("feedback", { returnObjects: true });
   const logos = [logo_1, logo_2, logo_3, logo_4, logo_5, logo_6, logo_7];
+  const [slidesToShow, setSlidesToShow] = useState(2); // Default value for larger screens
+  const [slidesToScroll, setSlidesToScroll] = useState(1); // Default value for scrolling
+
+  const updateSlides = () => {
+    const width = window.innerWidth;
+    if (width <= 480) {
+      setSlidesToShow(1);
+      setSlidesToScroll(1);
+    } else if (width <= 600) {
+      setSlidesToShow(1);
+      setSlidesToScroll(1);
+    } else if (width <= 1024) {
+      setSlidesToShow(1);
+      setSlidesToScroll(1);
+    } else {
+      setSlidesToShow(2);
+      setSlidesToScroll(1);
+    }
+  };
+
+  useEffect(() => {
+    // Update slide settings when the component is mounted
+    updateSlides();
+
+    // Add event listener for window resize
+    window.addEventListener("resize", updateSlides);
+
+    // Clean up event listener when component unmounts
+    return () => window.removeEventListener("resize", updateSlides);
+  }, []);
 
   const settings = {
     dots: false,
     infinite: false,
     speed: 500,
-    slidesToShow: 2,
-    slidesToScroll: 1,
+    slidesToShow: slidesToShow, // Dynamic value
+    slidesToScroll: slidesToScroll, // Dynamic value
     initialSlide: 0,
 
     responsive: [
