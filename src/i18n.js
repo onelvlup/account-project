@@ -8,8 +8,8 @@ i18next
   .use(initReactI18next)
   .init({
     debug: true,
-    fallbackLng: "en", // Default language to fall back to
-    lng: "ru", // Default language to use
+    fallbackLng: "ru", // Default language to fall back to
+    lng: "kg", // Default language to use
     resources: {
       ru: {
         translation: {
@@ -559,9 +559,9 @@ i18next
             team_text: "About",
             feedback_text: "Services",
             contact_text: "Team",
-            copyright_text: "Website development and design by:",
-            author_text:
+            copyright_text:
               "2025 © KAB group by Anna Kalinina. All rights reserved.",
+            author_text: "Website development and design by:",
           },
           terms: {
             title: "Agreement on the protection of personal data",
@@ -622,6 +622,129 @@ i18next
             contact: "If your question is urgent, call us at:",
             wa_button_text: "Open in WhatsApp",
             tel_button_text: "Open in Telegram",
+          },
+        },
+      },
+
+      kg: {
+        translation: {
+          greeting: "Ваш надёжный партнёр на каждом этапе развития бизнеса",
+          navigation: [
+            { name: "", link: "" },
+            { name: "", link: "" },
+            { name: "", link: "" },
+            { name: "", link: "" },
+            { name: "", link: "" },
+            { name: "", link: "" },
+          ],
+          hero: "",
+          hero_p: "",
+          hero_button_text: "",
+          about: "",
+          about_p_1: "",
+          about_p_2: "",
+          about_p_3: "",
+          about_p_4: "",
+          account: {
+            title: "",
+            cards: [
+              { title: "", description: "" },
+              { title: "", description: "" },
+              { title: "", description: "" },
+              { title: "", description: "" },
+              { title: "", description: "" },
+            ],
+          },
+          service: {
+            title: "",
+            description: "",
+            card: [
+              { title: "", description_items: [], bg_colors: "" },
+              { title: "", description_items: [], bg_colors: "" },
+              { title: "", description_items: [], bg_colors: "" },
+              { title: "", description_items: [], bg_colors: "" },
+              { title: "", description_items: [], bg_colors: "" },
+            ],
+          },
+          team: {
+            title: "",
+            cards: [
+              { name: "", description: "" },
+              { name: "", description: "" },
+              { name: "", description: "" },
+              { name: "", description: "" },
+              { name: "", description: "" },
+              { name: "", description: "" },
+              { name: "", description: "" },
+              { name: "", description: "" },
+              { name: "", description: "" },
+            ],
+          },
+          feedback: {
+            title: "",
+            cards: [
+              { name: "", title: "", feedback: "" },
+              { name: "", title: "", feedback: "" },
+              { name: "", title: "", feedback: "" },
+              { name: "", title: "", feedback: "" },
+              { name: "", title: "", feedback: "" },
+              { name: "", title: "", feedback: "" },
+              { name: "", title: "", feedback: "" },
+            ],
+          },
+          form: {
+            title: "",
+            description_items: [],
+            form_text: {
+              name_input: "",
+              email_input: "",
+              phone_input: "",
+              button_text: "",
+              warning_text: "",
+            },
+          },
+          footer: {
+            info_title: "",
+            description: "",
+            terms: "",
+            adress: "",
+            work_time: "",
+            map_button_text: "",
+            nav_text: "",
+            about_text: "",
+            service_text: "",
+            team_text: "",
+            feedback_text: "",
+            contact_text: "",
+            copyright_text: "",
+            author_text: "",
+          },
+          terms: {
+            title: "",
+            intro: "",
+            intro_items: [],
+            intro_body: "",
+            body_items: [],
+            body_1: "",
+            body_2: "",
+            body_3: "",
+            conclution: "",
+            conclution_items: [],
+          },
+          overlay: {
+            p: "",
+            title: "",
+            title_p: "",
+            input_1: "",
+            input_2: "",
+            input_3: "",
+            input_submit: "",
+            terms_text: "",
+            success_text: "",
+            success_text_p: "",
+            contact: "",
+            wa_button_text: "",
+            tel_button_text: "",
           },
         },
       },

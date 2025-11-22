@@ -115,7 +115,7 @@ function Team() {
             </button>
           </div>
         </div>
-        <div className=" pt-[56px]">
+        <div className=" pt-[56px] overflow-hidden">
           <Slider
             ref={(slider) => {
               sliderRef = slider;

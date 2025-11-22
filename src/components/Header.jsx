@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import LOGO_PNG from "../assets/png/logo.png";
+import LOGO_SVG from "../assets/svg/logo.svg";
 import PHONE_SVG from "../assets/svg/phone_svg.svg";
 import PHONE_SVG_WHITE from "../assets/svg/phone_svg_white.svg";
 
@@ -13,7 +14,6 @@ import CLOSE_BUTTON_SVG from "../assets/svg/header_buttons/close.svg";
 import { useTranslation } from "react-i18next";
 
 function Header() {
-  const [language, setLanguage] = useState("ru");
   const { i18n } = useTranslation();
   const [visible, setVisible] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
@@ -21,22 +21,24 @@ function Header() {
     setVisible((p) => !p);
   };
   const handleChangeLanguage = (lang) => {
-    i18n.changeLanguage(lang);
     setLanguage(lang);
   };
-  const { formVisible, toggleFormVisible } = useGlobalState();
+  const { formVisible, toggleFormVisible, language, setLanguage } =
+    useGlobalState();
 
   const { t } = useTranslation();
   const navigationLinks = t("navigation", { returnObjects: true });
 
-  useEffect(() => {
-    console.log("Navigation Links:", navigationLinks); // This should log an array of objects.
-  }, [navigationLinks]);
-
   return (
     <>
       {visible && (
-        <NavigationMenu links={navigationLinks} setVisible={setVisible} />
+        <NavigationMenu
+          language={language}
+          handleChangeLanguage={handleChangeLanguage}
+          toggleFormVisible={toggleFormVisible}
+          links={navigationLinks}
+          setVisible={setVisible}
+        />
       )}
 
       <header className=" bg-white w-full  px-[16px] md: px-auto fixed left-0 top-0 z-[9999]">
@@ -46,7 +48,7 @@ function Header() {
               <div className="w-full">
                 <img
                   className=" object-cover  h-full max-h-[48px]"
-                  src={LOGO_PNG}
+                  src={LOGO_SVG}
                   alt=""
                 />
               </div>
@@ -104,8 +106,17 @@ import SIGH_PNG from "../assets/png/sign_png.png";
 import i18next from "i18next";
 import { useGlobalState } from "../context/Context";
 
-const NavigationMenu = ({ links, setVisible }) => {
+const NavigationMenu = ({
+  links,
+  setVisible,
+  handleChangeLanguage,
+  toggleFormVisible,
+  language,
+}) => {
   const [isHovered, setIsHovered] = useState(false);
+  const { t } = useTranslation();
+  const navigationLinks = t("navigation", { returnObjects: true });
+  const footer_data = t("footer", { returnObjects: true });
 
   return (
     <div className="fixed top-0 left-0 bg-white h-full w-full flex flex-col w-full z-[9999] xl:hidden">
@@ -131,6 +142,7 @@ const NavigationMenu = ({ links, setVisible }) => {
           className=" font-semibold outline outline-[#EBEBEB] outline-[1px] p-[16px] rounded-[8px] flex gap-[8px] hover:bg-[#180090] hover:text-white"
           onMouseEnter={() => setIsHovered(true)} // When mouse enters, set hovered to true
           onMouseLeave={() => setIsHovered(false)} // When mouse leaves, set hovered to false
+          onClick={toggleFormVisible}
         >
           {/* Show first image when not hovered, and second image when hovered */}
           <img src={isHovered ? PHONE_SVG_WHITE : PHONE_SVG} alt="Phone" />
@@ -138,22 +150,24 @@ const NavigationMenu = ({ links, setVisible }) => {
             +996 312 988 301
           </span>
         </button>
-        <button className=" font-semibold outline outline-[#EBEBEB] outline-[1px] p-[16px] rounded-[8px] flex gap-[8px] hover:bg-[#180090] hover:text-white">
-          <img src={RU_LANG_SVG} alt="" />
-          Русский
+        <button
+          onClick={() => handleChangeLanguage(language === "ru" ? "en" : "ru")} // Toggle language
+          className="font-semibold outline outline-[#EBEBEB] outline-[1px] p-[16px] rounded-[8px] flex gap-[8px] hover:bg-[#180090] hover:text-white"
+        >
+          <img src={language === "ru" ? EN_LANG_SVG : RU_LANG_SVG} alt="" />
+          {/* Step 2: Change button text based on the current language */}
+          {language === "ru" ? "English" : "Русский"}
         </button>
       </div>
       <div className=" max-w-[1296px] w-full mx-auto flex flex-col items-center justify-between ">
         <small className=" items-center flex">
-          Разработка и дизайн сайта:{" "}
+          {footer_data.author_text}
           <img className=" pl-[10px]" src={SIGH_PNG} alt="" />
         </small>
         <br />
         <hr className="bg-[#180090] opacity-10 w-full " />
 
-        <small className="mt-[8px]">
-          2025 © KAB group by Anna Kalinina. Все права защищены
-        </small>
+        <small className="mt-[8px]">{footer_data.copyright_text}</small>
       </div>
     </div>
   );

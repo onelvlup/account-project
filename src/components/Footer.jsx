@@ -4,6 +4,8 @@ import BUTTON_1_SVG from "../assets/svg/social_media/wa_svg.svg";
 import BUTTON_2_SVG from "../assets/svg/social_media/tel_svg.svg";
 import BUTTON_3_SVG from "../assets/svg/social_media/ins_svg.svg";
 import LOGO_PNG from "../assets/png/logo.png";
+import LOGO_SVG from "../assets/svg/logo.svg";
+
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
@@ -42,7 +44,7 @@ function Footer() {
         <div>
           <div>
             <a href="/">
-              <img className="max-h-[56px]" src={LOGO_PNG} alt="" />
+              <img className="max-h-[56px]" src={LOGO_SVG} alt="" />
             </a>
             <p className="text-[#6C7281] text-[14px] font-semibold pt-[32px]">
               {footer_data.description}

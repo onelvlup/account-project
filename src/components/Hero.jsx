@@ -2,32 +2,30 @@ import React, { useEffect, useState } from "react";
 import Span from "../components/Span";
 
 import BANNER_PNG from "../assets/png/hero.png";
-import LOGO_WHITE_PNG from "../assets/png/logo_white.png";
+import LOGO_SVG from "../assets/svg/mobile_logo.svg";
+import LOGO_WHITE_SVG from "../assets/svg/logo_white.svg";
+
 import CONTACT_PERSON from "../assets/png/contact_person.png";
 
 import CLOSE_BUTTON_SVG from "../assets/svg/christ_svg.svg";
+import CLOSE_BUTTON_WHITE_SVG from "../assets/svg/christ_white_svg.svg";
 import TELEGRAM_BUTTON_SVG from "../assets/svg/buttons/telegram_svg.svg";
 import WHATSAPP_BUTTON_SVG from "../assets/svg/buttons/whatsapp_svg.svg";
 import { useTranslation } from "react-i18next";
 import { useGlobalState } from "../context/Context";
 function Hero() {
   const { formVisible, toggleFormVisible } = useGlobalState();
-  const [visible, setVisible] = useState(false);
-  const toggle = () => {
-    setVisible((p) => !p);
-  };
 
   const { t } = useTranslation();
 
   return (
     <section id="main" className=" bg-[#F7F7FF] w-full  mt-[72px]">
-      {formVisible && <ContactOverlay toggle={toggleFormVisible} />}
-      <article className="min-h-screen max-w-[1296px] w-full mx-auto px-[16px] md:px-auto">
+      <article className=" max-w-[1296px] w-full mx-auto px-[16px] md:px-auto pb-[48px] md:pb-[104px]">
         <div className="flex pt-[80px] flex-col xl:flex-row">
           <h1 className="  tracking-[0]  line-clamp-3 flex-1 w-full">
             {t("hero", { returnObjects: true })}
           </h1>
-          <div className="pl-0 xl:pl-[106px]">
+          <div className="pl-0 xl:pl-[106px] pt-[16px] md:pt-[0px]">
             <div className="md:ml-auto w-auto max-w-[370px]">
               <p className=" text-[20px] text-[#6C7281]">
                 {t("hero_p", { returnObjects: true })}
@@ -137,96 +135,120 @@ const ContactOverlay = ({ toggle }) => {
   }
 
   return (
-    <div className="fixed top-0 left-0 w-full h-full bg-[rgba(0,0,0,0.6)] z-[99999] flex justify-center items-center">
-      <div className="text-white bg-white rounded-[24px] flex relative">
-        <button onClick={toggle} className=" absolute right-[30px] top-[30px]">
-          <img src={CLOSE_BUTTON_SVG} alt="" />
-        </button>
-        {/* Left Blue Section */}
-        <div className="bg-[#180090]  w-[280px] rounded-l-[24px] p-[32px] pb-0 py-[40px] flex flex-col">
-          <img src={LOGO_WHITE_PNG} alt="" />
-          <small className="13px pt-[16px] text-white  opacity-70">
-            {overlay_data.p}
-          </small>
-          <img src={CONTACT_PERSON} className="h-full object-cover" alt="" />
-        </div>
-
-        {/* Right Form Section */}
-        <div className=" p-[76px] px-[72px] max-w-[561px] w-full">
-          <h3 className="font-semibold text-[28px] text-[#091520]">
-            {final ? "Спасибо за обращение!" : overlay_data.title}
-          </h3>
-          <p className="text-[#747480] font-medium">
-            {final ? overlay_data.succes_text : overlay_data.title_p}
-          </p>
-          {final && (
-            <p className=" text-[#091520] pt-[40px]">
-              {overlay_data.success_text_p} <br /> <b>+996 312 988 301</b>
-            </p>
-          )}
-
-          {final ? (
-            <>
-              <button
-                onClick={() => {
-                  openInNewTab(WHATSAPP_LINK);
-                }}
-                className="bg-[#25D366] p-[13px] px-[24px] flex gap-[12px] rounded-[12px] mt-[32px]"
-              >
-                <img src={WHATSAPP_BUTTON_SVG} alt="" />
-                {overlay_data.wa_button_text}
-              </button>
-              <br />
-              <button
-                onClick={() => {
-                  openInNewTab(TELEGRAM_LINK);
-                }}
-                className="bg-telegram p-[13px] px-[24px] flex gap-[12px] rounded-[12px] mb-[115px]"
-              >
-                <img src={TELEGRAM_BUTTON_SVG} alt="" />
-                {overlay_data.tel_button_text}
-              </button>
-            </>
-          ) : (
-            <form
-              onSubmit={handleSubmit} // Обработчик отправки формы
-              className="h-full text-black pt-[32px] rounded-[16px] flex flex-col gap-[12px]"
+    <div className=" fixed top-0 left-0 w-full h-full bg-[rgba(0,0,0,0.6)] z-[99999] flex justify-center items-center">
+      <div className="p-[16px]">
+        <div className="text-white bg-white rounded-[24px] flex relative flex-col  md:flex-row  ">
+          <button
+            onClick={toggle}
+            className=" absolute right-[30px] top-[30px] z-[9999] "
+          >
+            <img className="hidden md:block" src={CLOSE_BUTTON_SVG} alt="" />
+            <img className="md:hidden" src={CLOSE_BUTTON_WHITE_SVG} alt="" />
+          </button>
+          {/* Left Blue Section */}
+          <div
+            className="bg-[#180090]  md:w-[280px] overflow-hidden md:overflow-auto w-full
+             max-h-[240px] md:max-h-full
+            rounded-t-[24px] md:rounded-t-[0px] md:rounded-l-[24px] flex  flex-row md:flex-col  justify-between "
+          >
+            <div
+              className="flex flex-col justify-between pb-[24px] p-[32px] 
+            pb-0 py-[40px] "
             >
-              <input
-                type="text"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                className="font-semibold outline outline-[#EBEBEB] outline-[1px] p-[16px] rounded-[8px]"
-                placeholder={overlay_data.input_1}
-              />
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="font-semibold outline outline-[#EBEBEB] outline-[1px] p-[16px] rounded-[8px]"
-                placeholder={overlay_data.input_2}
-              />
-              <input
-                type="tel"
-                value={phone}
-                onChange={(e) => setPhone(e.target.value)}
-                className="font-semibold outline outline-[#EBEBEB] outline-[1px] p-[16px] rounded-[8px]"
-                placeholder={overlay_data.input_3}
-              />
-              <input
-                type="submit"
-                value={overlay_data.input_submit}
-                className="py-[13px] w-full text-white bg-[#091520] rounded-[8px] mt-[24px]"
-              />
-              <small className="text-[12px] text-[#888E94] font-semibold">
-                {overlay_data.terms_text}
+              <img className=" md:hidden" src={LOGO_SVG} alt="" />
+              <img className="hidden md:block" src={LOGO_WHITE_SVG} alt="" />
+              <small className="13px pt-[16px] text-white  opacity-70">
+                {overlay_data.p}
               </small>
-            </form>
-          )}
+            </div>
+
+            <div className="mt-auto">
+              <img
+                src={CONTACT_PERSON}
+                className="h-full ml-auto object-cover md:scale-[1.0] "
+                alt=""
+              />
+            </div>
+          </div>
+          {/* Right Form Section */}
+          <div className=" p-[24px] pb-[31px] md:p-[76px] md:px-[72px] max-w-[561px] w-full">
+            <h3 className="font-semibold text-[28px] text-[#091520]">
+              {final ? overlay_data.success_text : overlay_data.title}
+            </h3>
+            <p className="text-[#747480] font-medium">
+              {final ? overlay_data.succes_text : overlay_data.title_p}
+            </p>
+            {final && (
+              <p className=" text-[#091520] pt-[40px]">
+                {overlay_data.success_text_p} <br /> <b>+996 312 988 301</b>
+              </p>
+            )}
+
+            {final ? (
+              <>
+                <button
+                  onClick={() => {
+                    openInNewTab(WHATSAPP_LINK);
+                  }}
+                  className="bg-[#25D366] p-[13px] px-[24px] flex gap-[12px] rounded-[12px] mt-[32px]"
+                >
+                  <img src={WHATSAPP_BUTTON_SVG} alt="" />
+                  {overlay_data.wa_button_text}
+                </button>
+                <br />
+                <button
+                  onClick={() => {
+                    openInNewTab(TELEGRAM_LINK);
+                  }}
+                  className="bg-telegram p-[13px] px-[24px] flex gap-[12px] rounded-[12px] mb-[115px]"
+                >
+                  <img src={TELEGRAM_BUTTON_SVG} alt="" />
+                  {overlay_data.tel_button_text}
+                </button>
+              </>
+            ) : (
+              <form
+                onSubmit={handleSubmit} // Обработчик отправки формы
+                className="h-full text-black pt-[32px] rounded-[16px] flex flex-col gap-[12px]"
+              >
+                <input
+                  type="text"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  className="font-semibold outline outline-[#EBEBEB] outline-[1px] p-[16px] rounded-[8px]"
+                  placeholder={overlay_data.input_1}
+                />
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="font-semibold outline outline-[#EBEBEB] outline-[1px] p-[16px] rounded-[8px]"
+                  placeholder={overlay_data.input_2}
+                />
+                <input
+                  type="tel"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                  className="font-semibold outline outline-[#EBEBEB] outline-[1px] p-[16px] rounded-[8px]"
+                  placeholder={overlay_data.input_3}
+                />
+                <input
+                  type="submit"
+                  value={overlay_data.input_submit}
+                  className="py-[13px] w-full text-white bg-[#091520] rounded-[8px] mt-[24px]"
+                />
+                <small className="text-[12px] text-[#888E94] font-semibold">
+                  {overlay_data.terms_text}
+                </small>
+              </form>
+            )}
+          </div>
         </div>
       </div>
     </div>
   );
 };
+
+export { ContactOverlay };
 
 export default Hero;
