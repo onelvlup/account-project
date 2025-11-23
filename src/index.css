@@ -91,3 +91,7 @@ html {
 /* * {
   outline: greenyellow 1px solid;
 } */
+
+input[type="submit"] {
+  cursor: pointer;
+}

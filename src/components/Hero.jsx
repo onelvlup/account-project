@@ -22,10 +22,10 @@ function Hero() {
     <section id="main" className=" bg-[#F7F7FF] w-full  mt-[72px]">
       <article className=" max-w-[1296px] w-full mx-auto px-[16px] md:px-auto pb-[48px] md:pb-[104px]">
         <div className="flex pt-[80px] flex-col xl:flex-row">
-          <h1 className="  tracking-[0]  line-clamp-3 flex-1 w-full">
+          <h1 className="  flex-1 w-full">
             {t("hero", { returnObjects: true })}
           </h1>
-          <div className="pl-0 xl:pl-[106px] pt-[16px] md:pt-[0px]">
+          <div className="pl-0 xl:pl-[56px] pt-[16px] md:pt-[0px]">
             <div className="md:ml-auto w-auto max-w-[370px]">
               <p className=" text-[20px] text-[#6C7281]">
                 {t("hero_p", { returnObjects: true })}
@@ -180,7 +180,8 @@ const ContactOverlay = ({ toggle }) => {
             </p>
             {final && (
               <p className=" text-[#091520] pt-[40px]">
-                {overlay_data.success_text_p} <br /> <b>+996 312 988 301</b>
+                {overlay_data.success_text_p} <br />
+                <br /> {overlay_data.contact} <br /> <b>+996 312 988 301</b>
               </p>
             )}
 

@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 
 function About() {
   const { t } = useTranslation();
+  const about_data = t("about_items", { returnObjects: true });
   return (
     <section id="about" className=" bg-white w-full">
       <article className=" max-w-[1296px] w-full mx-auto">
@@ -18,22 +19,25 @@ function About() {
                 <h3 className=" font-extrabold text-[#180090] text-[52px]">
                   20+{" "}
                 </h3>
-                <small className="text-[#6C7281] text-[14px]">лет опыта</small>
-              </div>
-              <div>
-                <h3 className=" font-extrabold text-[#180090] text-[52px]">
-                  25 лет{" "}
-                </h3>
                 <small className="text-[#6C7281] text-[14px]">
-                  личной экспертизы
+                  {" "}
+                  {about_data.xp_year}
                 </small>
               </div>
               <div>
                 <h3 className=" font-extrabold text-[#180090] text-[52px]">
-                  200+{" "}
+                  25 <small className="text-[16px]">{about_data.years}</small>
                 </h3>
                 <small className="text-[#6C7281] text-[14px]">
-                  компаний доверяют нам
+                  {about_data.personal_xp}
+                </small>
+              </div>
+              <div>
+                <h3 className=" font-extrabold text-[#180090] text-[52px] ">
+                  200+{" "}
+                </h3>
+                <small className="text-[#6C7281] text-[14px] wrap-break-word">
+                  {about_data.trusted}
                 </small>
               </div>
             </div>

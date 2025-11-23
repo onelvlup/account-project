@@ -121,7 +121,9 @@ function Footer() {
         <small>{footer_data.copyright_text}</small>
         <small className="items-center hidden xl:flex">
           {footer_data.author_text}
-          <img className="pl-[10px]" src={SIGH_PNG} alt="" />
+          <a target="_blank" href="https://onelvlup.kg">
+            <img className="pl-[10px]" src={SIGH_PNG} alt="" />
+          </a>
         </small>
       </div>
     </footer>
